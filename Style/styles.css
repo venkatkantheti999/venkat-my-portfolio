@@ -1,5 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
+.skills-slideshow1 {
+    content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    min-height: 500px;
+    overflow: visible; /* allow slides to show outside container */
+}
+
+.skills-slideshow2 {
+    content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    min-height: 0px;
+    overflow: visible; /* allow slides to show outside container */
+}
+
+.skill-slide {
+    flex: 0 0 250px;
+    opacity: 0.5;
+    transform: scale(0.8);
+    transition: transform 0.5s, opacity 0.5s;
+    z-index: 1;
+    margin: 0 10px;
+    position: static; /* important: remove absolute positioning */
+    pointer-events: none;
+    display: block;
+}
+
+.skill-slide.active {
+    opacity: 1;
+    transform: scale(1.1);
+    z-index: 2;
+    pointer-events: auto;
+}
+
+.skill-slide.left,
+.skill-slide.right {
+    opacity: 0.8;
+    transform: scale(0.9);
+    z-index: 1;
+}
+
+.skill-slide:not(.active):not(.left):not(.right) {
+    opacity: 0.3;
+    transform: scale(0.7);
+    z-index: 0;
+}
+
+.skill-slide img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -69,7 +133,7 @@ header {
 
 nav a{
     font-size: 1.8rem;
-    color: white;
+    color: black;
     margin-left: 4rem;
     font-weight: 500;
     transition: 0.3s ease;
@@ -83,7 +147,7 @@ nav a.active {
     border-bottom: 3px solid #b74b4b;
 }
 
-@media(max-width:995px) {
+/* @media(max-width:995px) {
     nav {
         position: absolute;
         top: 100%;
@@ -93,7 +157,7 @@ nav a.active {
         border-bottom: 3px solid #b74b4b;
         border-bottom-left-radius: 2rem;
         padding: 1rem solid;
-        background-color: #161616;
+        background-color: #191f36;
         border-top: 0.1rem solid rgba(0,0,0,0.1);
     }
 
@@ -113,14 +177,14 @@ nav a.active {
         border-bottom: 0.5rem solid #b74b4b;
         border-radius: 0.5rem;
     }
-}
+}  */
 
 .home {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8rem;
-    background-color: black;
+    background-color: #e0f7fa;
 }
 
 .home .home-content h1{
@@ -145,7 +209,7 @@ span {
 
 .home-img img{
     position: relative;
-    width: 32vw;
+    width: 50rem;
     border-radius: 50%;
     box-shadow: 0 0 25px scrgb(0, 0, 0, 0.2);
     transition: 0.2s linear;
@@ -180,7 +244,7 @@ span {
 .btn{
     display: inline-block;
     padding: 1rem 2.8rem;
-    background-color: black;
+    background-color: whitesmoke;
     border-radius: 4rem;
     color: #b74b4b;
     letter-spacing: 0.3rem;
@@ -198,7 +262,8 @@ span {
 }
 
 p {
-    color: whitesmoke;
+    color: black;
+    font-size: 1.5rem;
 }
 
 /*
