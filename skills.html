@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--Main CSS Sheet-->
+    <link rel="stylesheet" href="Style/styles.css">
+    <title>Venkat Portfolio Website</title>
+    <link rel="icon" type="image/png" href="images/logo3.png">
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <div class="skills-slideshow1">
+        <div class="skill-slide active">
+            <img src="images/java.png" alt="Java">
+            <h2>Java</h2>
+            <p>I have 4.3 years of experience in Java programming, where I have contributed to both enhancing existing codebases and developing robust classes from scratch for end-to-end application flows. My expertise includes integrating applications using AWS Java SDK and Commercetools Java SDK, enabling seamless communication with cloud services and e-commerce platforms. Throughout my experience, I have focused on writing clean, maintainable, and scalable code to support business-critical solutions.</p>
+        </div>
+        <div class="skill-slide">
+            <img src="images/springboot.png" alt="Spring Boot">
+            <h2>Spring Boot</h2>
+            <p>Experienced in building RESTful APIs and microservices using Spring Boot framework.</p>
+        </div>
+        <div class="skill-slide">
+            <img src="images/commercetools.png" alt="Commercetools">
+            <h2>Commercetools</h2>
+            <p>Skilled in implementing e-commerce solutions using Commercetools platform.</p>
+        </div>
+    </div>
+
+    <div class="skills-slideshow2">
+        <div class="skill-slide">
+            <h2>Apache Camel</h2>
+            <p>Knowledgeable in integrating applications using Apache Camel for routing and mediation.</p>
+        </div>
+        <div class="skill-slide">
+            <h2>AWS</h2>
+            <p>Familiar with AWS services for cloud computing, including EC2, S3, and Lambda.</p>
+        </div>
+        <div class="skill-slide">
+            <h2>Talon One</h2>
+            <p>Familiar with AWS services for cloud computing, including EC2, S3, and Lambda.</p>
+        </div>
+    </div>
+
+    <script>
+    fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar-container').innerHTML = data;
+        });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const slides = document.querySelectorAll('.skill-slide');
+        let current = 0;
+
+        function updateSlides() {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active', 'left', 'right');
+                if (i === current) {
+                    slide.classList.add('active');
+                } else if (i === (current - 1 + slides.length) % slides.length) {
+                    slide.classList.add('left');
+                } else if (i === (current + 1) % slides.length) {
+                    slide.classList.add('right');
+                }
+            });
+        }
+
+        function nextSlide() {
+            current = (current + 1) % slides.length;
+            updateSlides();
+        }
+
+        function prevSlide() {
+            current = (current - 1 + slides.length) % slides.length;
+            updateSlides();
+        }
+
+        updateSlides();
+        setInterval(nextSlide, 1500);
+
+        // Optional: Add navigation arrows
+        // Uncomment below to add manual navigation
+        /*
+        const slideshow = document.querySelector('.skills-slideshow');
+        const leftArrow = document.createElement('button');
+        leftArrow.innerHTML = '&#8592;';
+        leftArrow.style.position = 'absolute';
+        leftArrow.style.left = '0';
+        leftArrow.style.top = '50%';
+        leftArrow.style.transform = 'translateY(-50%)';
+        slideshow.appendChild(leftArrow);
+
+        const rightArrow = document.createElement('button');
+        rightArrow.innerHTML = '&#8594;';
+        rightArrow.style.position = 'absolute';
+        rightArrow.style.right = '0';
+        rightArrow.style.top = '50%';
+        rightArrow.style.transform = 'translateY(-50%)';
+        slideshow.appendChild(rightArrow);
+
+        leftArrow.addEventListener('click', prevSlide);
+        rightArrow.addEventListener('click', nextSlide);
+        */
+    });
+    </script>
+</body>
+</body>
+</html>
